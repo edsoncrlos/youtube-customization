@@ -18,6 +18,7 @@
                     type="text"
                     placeholder="Link do vídeo"
                     id="url-link"
+                    required
                     name="url-link"
                 />
             </div>
@@ -32,10 +33,18 @@
                     inputmode="numeric"
                     autocomplete="off"
                     placeholder="Largura desejada"
+                    required
                     id="select-width"
                     name="select-width"
+                    list="widths"
                 />
-                <!-- Essa abordagem pode não funcionar em navegadores antigos, mas fornecer uma interface de entrada numérica em dispositivos móveis. -->
+                
+                <datalist id="widths">
+                    <option>1366</option>
+                    <option>1280</option>
+                    <option>1024</option>
+                    <option>800</option>
+                </datalist>
             </div>
             
             <div class="input-group actions">

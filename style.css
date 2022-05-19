@@ -3,7 +3,6 @@
     --red-hover: #f00;
 }
 
-
 * {
     margin: 0;
     padding: 0;
@@ -42,7 +41,7 @@ input::-webkit-inner-spin-button {
 .input-group button {
     font-size: 2rem;
     color: #fff;
-    padding-left: 30px;
+    padding-left: 3rem;
     margin: 2rem;
     width: 50%;
     height: 40px;
@@ -74,4 +73,8 @@ input::-webkit-inner-spin-button {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border-width: 0;
+}
+
+input::-webkit-calendar-picker-indicator {
+    opacity: 0;
 }

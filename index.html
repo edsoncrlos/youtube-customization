@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>youtube customization</title>
+</head>
+<body>
+
+    <div id="form">
+        <form action="">
+            <div class="input-group">
+                <label for="url-link">url do vídeo</label>
+                <input 
+                    autocomplete="off"
+                    type="text"
+                    placeholder="Link do vídeo"
+                    id="url-link"
+                    name="url-link"
+                />
+            </div>
+            
+            <div class="input-group">
+                <label for="select-width">Seleciona Largura</label>
+                <input 
+                    type="number"
+                    inputmode="numeric"
+                    autocomplete="off"
+                    placeholder="Largura desejada"
+                    id="select-width"
+                    name="select-width"
+                />
+                <!-- Essa abordagem pode não funcionar em navegadores antigos, mas fornecer uma interface de entrada numérica em dispositivos móveis. -->
+            </div>
+            
+            <div class="input-group actions">
+                <input type="submit">
+               <!-- <button>Iniciar video</button> -->
+            </div>
+        </form>
+    </div>
+        <!-- https://www.youtube.com/watch?v=ngVU74daJ8Y -->
+        
+        <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/ngVU74daJ8Y?start=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+        <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+:root {
+    --red-you-tube: #c00;
+    --red-hover: #f00;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;/* 10px */
+}
+
+body {
+    background: #000;
+}
+
+#form {
+    width: 50%;
+    border: 1px solid blue;
+}
+/*----------------Input-----------------*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.input-group {
+    display: flex;
+    justify-content: center;
+}
+
+.input-group input,
+.input-group button {
+    margin: 2rem;
+    width: 50%;
+    height: 40px;
+    background: var(--red-hover);
+    border-radius: 2rem;
+}
+
+.input-group:hover input,
+.input-group:hover button{
+    background: var(--red-you-tube);
+}
+
+.input-group input::placeholder {
+    color: #fff;
+    font-size: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+input::-webkit-input-placeholder {
+        
+}
+
+label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+label {
+    position: absolute;
+    visibility: hidden;
+}

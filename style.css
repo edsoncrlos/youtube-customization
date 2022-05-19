@@ -19,7 +19,11 @@ body {
 }
 
 #form {
-    width: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
     border: 1px solid blue;
 }
 /*----------------Input-----------------*/
@@ -36,6 +40,9 @@ input::-webkit-inner-spin-button {
 
 .input-group input,
 .input-group button {
+    font-size: 2rem;
+    color: #fff;
+    padding-left: 30px;
     margin: 2rem;
     width: 50%;
     height: 40px;
@@ -57,11 +64,7 @@ input::-webkit-inner-spin-button {
     transform: translate(-50%, -50%)
 }
 
-input::-webkit-input-placeholder {
-        
-}
-
-label {
+.sr-only {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -71,9 +74,4 @@ label {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border-width: 0;
-}
-
-label {
-    position: absolute;
-    visibility: hidden;
 }

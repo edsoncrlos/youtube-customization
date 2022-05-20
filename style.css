@@ -1,6 +1,5 @@
 :root {
-    --red-you-tube: #c00;
-    --red-hover: #f00;
+    --red-you-tube: #f00;
 }
 
 * {
@@ -23,8 +22,8 @@ body {
     top: 50%;
     transform: translate(-50%, -50%);
     width: 80%;
-    border: 1px solid blue;
 }
+
 /*----------------Input-----------------*/
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -45,13 +44,13 @@ input::-webkit-inner-spin-button {
     margin: 2rem;
     width: 50%;
     height: 40px;
-    background: var(--red-hover);
+    background: var(--red-you-tube);
     border-radius: 2rem;
 }
 
 .input-group:hover input,
 .input-group:hover button{
-    background: var(--red-you-tube);
+    opacity: 0.8;
 }
 
 .input-group input::placeholder {
@@ -77,4 +76,20 @@ input::-webkit-inner-spin-button {
 
 input::-webkit-calendar-picker-indicator {
     opacity: 0;
+}
+
+/* yt-video */
+.yt-video-background {
+    display: none;
+}
+
+.yt-video-background.on {
+    background: #000;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

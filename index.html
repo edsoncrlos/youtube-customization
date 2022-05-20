@@ -10,11 +10,11 @@
 <body>
 
     <div id="form">
-        <form action="">
+        <form action="" onsubmit="Form.submit(event)">
             <div class="input-group">
                 <label for="url-link" class="sr-only">url do vídeo</label>
                 <input 
-                    autocomplete="off"
+                    autocomplete="on"
                     type="text"
                     placeholder="Link do vídeo"
                     id="url-link"
@@ -48,8 +48,7 @@
             </div>
             
             <div class="input-group actions">
-                <input onclick="ytVideo.open()" type="submit">
-               <!-- <button>Iniciar video</button> -->
+               <button>Iniciar video</button>
             </div>
         </form>
     </div>
@@ -61,6 +60,6 @@
     </div>
         <!-- https://www.youtube.com/watch?v=ngVU74daJ8Y -->
         
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>

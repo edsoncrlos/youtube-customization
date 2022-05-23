@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/phosphor-icons"></script>
+
     <title>youtube customization</title>
 </head>
 <body>
@@ -18,7 +20,7 @@
                     type="text"
                     placeholder="Link do vídeo"
                     id="url-link"
-                    required
+                    
                     name="url-link"
                 />
             </div>
@@ -33,7 +35,7 @@
                     inputmode="numeric"
                     autocomplete="off"
                     placeholder="Largura desejada"
-                    required
+                    
                     id="select-width"
                     name="select-width"
                     list="widths"
@@ -54,6 +56,9 @@
     </div>
 
     <div class="yt-video-background">
+        <div>
+            <button type="button" onclick="Utils.toggle()"><i class="ph-arrow-left ph-2x"></i></button>
+        </div>
         <div class="yt-video">
             
         </div>

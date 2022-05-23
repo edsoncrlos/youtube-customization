@@ -1,7 +1,7 @@
 let show = true;
 
 Utils = {
-    toggle () {    
+    toggle () {  
         const background = document.
         querySelector('.yt-video-background')
         
@@ -15,9 +15,8 @@ const Video = {
         const {urlLink, width} = Form.getValues();
         const height = width*9/16;
         const link = Video.getLink(urlLink);
-        const ytVideo = document.querySelector('.yt-video-background')
+        const ytVideo = document.querySelector('.yt-video')
         
-        console.log(link)
         ytVideo.innerHTML = `
             <iframe width="${width}" height="${height}" src="https://www.youtube.com/embed/${link}?start=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         `
@@ -68,6 +67,5 @@ const Form = {
         } catch (error) {
             alert(error.message)
         }
-        console.log(Form.getValues())
     }
 }

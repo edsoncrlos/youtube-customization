@@ -82,7 +82,8 @@ input::-webkit-calendar-picker-indicator {
 }
 
 /* yt-video */
-.yt-video-background {
+.yt-video-background,
+button[onclick="Utils.toggle()"] {
     display: none;
 }
 
@@ -99,12 +100,13 @@ input::-webkit-calendar-picker-indicator {
     align-items: center;
 }
 
-.yt-video-background.on button {
+button[onclick="Utils.toggle()"].on {
     color: #fff;
     background: var(--red-you-tube);
     width: 40px;
     height: 40px;
     border-radius: 2rem;
+    border: none;
 
     position: absolute;
     top: 25px;
@@ -149,11 +151,4 @@ input:checked + .toggle label {
     color: #0077FF;
     left: calc(100% - 5px);
     transform: translateX(-100%);
-}
-
-input:checked + .toggle label::after{
-}
-
-.toggle label:active:after {
-    width: 45px;
 }

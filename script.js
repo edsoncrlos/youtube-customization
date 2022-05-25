@@ -1,6 +1,6 @@
 let show = true;
 let isThemeDark = true;
-const html = document.querySelector("html");
+const html = document.querySelector("html"); 
 
 const getStyle = (element, style) =>
 window
@@ -23,8 +23,10 @@ Utils = {
     toggle () {  
         const background = document.
         querySelector('.yt-video-background')
+        const backButton = document.querySelector('[onclick="Utils.toggle()"]')
         
         background.classList.toggle("on", show) 
+        backButton.classList.toggle("on", show) 
         show = !show;
     },
     
@@ -45,12 +47,7 @@ Utils = {
         Object.keys(colors).map(key =>
             html.style.setProperty(transformKey(key), colors[key])
         )
-        /*
-            for (let [key, value] of Object.entries(colors)) {
-                body.style.setProperty(transformKey(key), value)   
-            }
-        */
-    }
+    },
 }
 
 const Video = {

@@ -10,14 +10,17 @@
     <title>youtube customization</title>
 </head>
 <body>
-
-    <head>
+    
+    <header>
         <div>
+            <div>
+                <button type="button" onclick="Utils.toggle()"><i class="ph-arrow-left ph-2x"></i></button>
+            </div>
             <div class="theme" onclick="Utils.toggleTheme()">
                 <button type="button"></button>
             </div>
         </div>
-    </head>
+    </header>
     
     <div id="form">
         <form action="" onsubmit="Form.submit(event)">
@@ -64,14 +67,10 @@
     </div>
 
     <div class="yt-video-background">
-        <div>
-            <button type="button" onclick="Utils.toggle()"><i class="ph-arrow-left ph-2x"></i></button>
-        </div>
         <div class="yt-video">
             
         </div>
     </div>
-        <!-- https://www.youtube.com/watch?v=ngVU74daJ8Y -->
         
     <script src="./script.js"></script>
 </body>

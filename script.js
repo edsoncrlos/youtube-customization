@@ -1,4 +1,23 @@
 let show = true;
+let isThemeDark = true;
+const html = document.querySelector("html");
+
+const getStyle = (element, style) =>
+window
+    .getComputedStyle(element)
+    .getPropertyValue(style)
+
+const initialColor = {
+    bg: getStyle(html, "--bg"),
+    bgToggle: getStyle(html, "--bg-toggle"),
+}
+
+const lightMode = {
+    bg: "#fff",
+    bgToggle: "gray",
+}
+
+const transformKey = key => "--" + key.replace(/([A-Z])/, "-$1").toLowerCase()
 
 Utils = {
     toggle () {  
@@ -8,6 +27,30 @@ Utils = {
         background.classList.toggle("on", show) 
         show = !show;
     },
+    
+    toggleTheme () {
+        const backgroundToggleTheme = document.querySelector('.theme')
+
+        if (isThemeDark) {
+            Utils.changeColors(lightMode);
+        } else {
+            Utils.changeColors(initialColor)
+        }
+
+        backgroundToggleTheme.classList.toggle("on", isThemeDark)
+        isThemeDark = !isThemeDark;
+    },
+
+    changeColors (colors) {
+        Object.keys(colors).map(key =>
+            html.style.setProperty(transformKey(key), colors[key])
+        )
+        /*
+            for (let [key, value] of Object.entries(colors)) {
+                body.style.setProperty(transformKey(key), value)   
+            }
+        */
+    }
 }
 
 const Video = {

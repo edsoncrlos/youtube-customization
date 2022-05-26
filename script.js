@@ -32,13 +32,13 @@ Utils = {
     
     toggleTheme () {
         const backgroundToggleTheme = document.querySelector('.theme')
-
+        
         if (isThemeDark) {
             Utils.changeColors(lightMode);
         } else {
             Utils.changeColors(initialColor)
         }
-
+        
         backgroundToggleTheme.classList.toggle("on", isThemeDark)
         isThemeDark = !isThemeDark;
     },
@@ -46,9 +46,30 @@ Utils = {
     changeColors (colors) {
         Object.keys(colors).map(key =>
             html.style.setProperty(transformKey(key), colors[key])
-        )
+            )
+    },
+
+    showButtons () {
+        const showHeader = document.querySelector('.menu-section');
+        if (showHeader.classList.contains('off')) {
+            showHeader.classList.remove('off')     
+        }
+        
+        clearInterval(interval, 0)
+        interval = setInterval(Utils.hideButtons, 3000);
+    },
+    
+    hideButtons () {
+        const backButton = document.querySelector('[onclick="Utils.toggle()"]')
+        if (backButton.classList.contains('on')) {
+            const hideHeader = document.querySelector('.menu-section');
+            hideHeader.classList.add('off');
+        }
     },
 }
+
+let interval = setInterval(Utils.hideButtons, 3000);
+html.addEventListener("mousemove", Utils.showButtons);
 
 const Video = {
     addVideo() {

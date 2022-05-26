@@ -147,8 +147,6 @@ button[onclick="Utils.toggle()"].on {
     right: 3px;
 }
 
-input:checked + .toggle label {
-    color: #0077FF;
-    left: calc(100% - 5px);
-    transform: translateX(-100%);
+.off {
+    display: none;
 }

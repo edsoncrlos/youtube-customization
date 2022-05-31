@@ -156,8 +156,8 @@ body::-webkit-scrollbar {
     height: 5px;
 }
 
-body::-webkit-scrollbar-track {
-    background: var(--bg);        
+body::-webkit-scrollbar-corner {
+    background: var(--bg);
 }
 
 body::-webkit-scrollbar-thumb {

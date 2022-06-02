@@ -2,6 +2,13 @@ let show = true;
 let isThemeDark = true;
 const html = document.querySelector("html"); 
 
+const Videos = [
+    {
+        link: "BvhYm0BOLvA"
+    },
+    
+]
+
 const getStyle = (element, style) =>
 window
     .getComputedStyle(element)
@@ -72,6 +79,8 @@ let interval = setInterval(Utils.hideButtons, 3000);
 html.addEventListener("mousemove", Utils.showButtons);
 
 const Video = {
+    tumbs: document.querySelector('.tumbnails'),
+
     addVideo() {
         const {urlLink, width} = Form.getValues();
         const height = width*9/16;
@@ -96,6 +105,20 @@ const Video = {
             link = urlLink.slice(indexStart);
         }
         return link;
+    },
+
+    addTumbnail(link) {
+        const tumb = document.createElement('div')
+        tumb.classList.add('tumbnail')
+
+        tumb.innerHTML = Video.innerHTMLTumbnail(link)
+        Video.tumbs.appendChild(tumb)
+    },
+
+    innerHTMLTumbnail(link) {
+        return`
+            <img src="https://img.youtube.com/vi/${link}/0.jpg">
+        `
     }
 }
 
@@ -130,3 +153,14 @@ const Form = {
         }
     }
 }
+
+const App = {
+    init () {
+        for (let index = 0; index < Videos.length; index++) {
+            console.log(Videos[index].link)
+            Video.addTumbnail(Videos[index].link)
+        }
+    }
+}
+
+App.init();

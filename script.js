@@ -1,12 +1,8 @@
-let show = true;
 let isThemeDark = true;
 const html = document.querySelector("html"); 
 
 const Videos = [
-    {
-        link: "BvhYm0BOLvA"
-    },
-    
+ 
 ]
 
 const getStyle = (element, style) =>
@@ -27,14 +23,9 @@ const lightMode = {
 const transformKey = key => "--" + key.replace(/([A-Z])/, "-$1").toLowerCase()
 
 Utils = {
-    toggle () {  
-        const background = document.
-        querySelector('.yt-video-background')
-        const backButton = document.querySelector('[onclick="Utils.toggle()"]')
-        
-        background.classList.toggle("on", show) 
-        backButton.classList.toggle("on", show) 
-        show = !show;
+    toggleBackButton () {  
+        const backButton = document.querySelector('.menu-section>div')
+        backButton.classList.toggle("off") 
     },
     
     toggleTheme () {
@@ -67,7 +58,7 @@ Utils = {
     },
     
     hideButtons () {
-        const backButton = document.querySelector('[onclick="Utils.toggle()"]')
+        const backButton = document.querySelector('#back-button')
         if (backButton.classList.contains('on')) {
             const hideHeader = document.querySelector('.menu-section');
             hideHeader.classList.add('off');
@@ -75,14 +66,69 @@ Utils = {
     },
 }
 
-let interval = setInterval(Utils.hideButtons, 3000);
-html.addEventListener("mousemove", Utils.showButtons);
+//let interval = setInterval(Utils.hideButtons, 3000);
+//html.addEventListener("mousemove", Utils.showButtons);
+
+const backButton = document.querySelector('#back-button')
+
+const Controler = {
+
+    togglePag (off, on) {
+        const turnOff = document.querySelector(off)
+        const turnOn = document.querySelector(on)
+        
+        turnOff.classList.add('off')
+        turnOn.classList.remove('off')
+    },
+    
+    formForMenu () {
+        Controler.togglePag('#form', '.menu')
+        backButton.removeEventListener('click', Controler.formForMenu)
+
+        Utils.toggleBackButton()
+    },
+
+    menuForForm () {
+        Controler.togglePag('.menu', '#form');
+        backButton.addEventListener("click", Controler.formForMenu)
+        
+        Utils.toggleBackButton()
+    },
+
+    thereVideo() {
+        if (Videos.length > 0) {
+            
+            const buttonVideoHistory = document.querySelector('.menu div:nth-child(2)')
+            if (buttonVideoHistory.classList.contains('off')) {
+                buttonVideoHistory.classList.remove('off')
+            }
+        }
+    },
+    
+    hideTumbnails() {
+        Controler.togglePag('.tumbnails', '.menu')
+
+        backButton.removeEventListener("click", Controler.hideTumbnails)
+        Utils.toggleBackButton()
+    },
+
+    showTumbnails() {
+        for (let index = 0; index < Videos.length; index++) {
+            Video.addTumbnail(Videos[index].link)
+        }
+        Controler.togglePag('.menu', '.tumbnails')
+
+        backButton.addEventListener("click", Controler.hideTumbnails)
+        Utils.toggleBackButton()
+    }
+
+}
 
 const Video = {
     tumbs: document.querySelector('.tumbnails'),
 
     addVideo() {
-        const {urlLink, width} = Form.getValues();
+        
         const height = width*9/16;
         const link = Video.getLink(urlLink);
         const ytVideo = document.querySelector('.yt-video')
@@ -90,21 +136,6 @@ const Video = {
         ytVideo.innerHTML = `
             <iframe width="${width}" height="${height}" src="https://www.youtube.com/embed/${link}?start=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         `
-    },
-
-    getLink(urlLink) {
-        let link;
-    
-        if (urlLink.indexOf("watch") != -1) {
-            const indexEndLink = urlLink.indexOf("&") == -1 ? urlLink.length : urlLink.indexOf("&");
-
-            link = urlLink.slice(urlLink.indexOf("=")+1, indexEndLink)
-        } else if (urlLink.indexOf("youtu.be") != -1) {
-            const indexStart = urlLink.indexOf("youtu.be")+9;
-
-            link = urlLink.slice(indexStart);
-        }
-        return link;
     },
 
     addTumbnail(link) {
@@ -128,9 +159,25 @@ const Form = {
 
     getValues() {
         return {
-            urlLink: Form.urlLink.value,
-            width: Form.width.value,
+            link: Form.getVideoLink(Form.urlLink.value),
+            width: Form.width.value
         }
+    },
+
+    getVideoLink(urlLink) {
+        
+        let link;
+    
+        if (urlLink.indexOf("watch") != -1) {
+            const indexEndLink = urlLink.indexOf("&") == -1 ? urlLink.length : urlLink.indexOf("&");
+
+            link = urlLink.slice(urlLink.indexOf("=")+1, indexEndLink)
+        } else if (urlLink.indexOf("youtu.be") != -1) {
+            const indexStart = urlLink.indexOf("youtu.be")+9;
+
+            link = urlLink.slice(indexStart);
+        }
+        return link;
     },
 
     validateFields() {
@@ -145,9 +192,8 @@ const Form = {
         event.preventDefault()
         
         try {
-            Utils.toggle()
-            Form.validateFields()
-            Video.addVideo()
+
+            Videos.push(Form.getValues())
         } catch (error) {
             alert(error.message)
         }
@@ -156,10 +202,8 @@ const Form = {
 
 const App = {
     init () {
-        for (let index = 0; index < Videos.length; index++) {
-            console.log(Videos[index].link)
-            Video.addTumbnail(Videos[index].link)
-        }
+        Controler.thereVideo()
+        
     }
 }
 

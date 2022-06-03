@@ -20,7 +20,8 @@ body {
     flex-direction: column;
 }
 
-#form {
+#form,
+.menu {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -84,12 +85,8 @@ input::-webkit-calendar-picker-indicator {
 }
 
 /* yt-video */
-.yt-video-background,
-button[onclick="Utils.toggle()"] {
-    display: none;
-}
 
-.yt-video-background.on {
+.yt-video-background {
     background: var(--bg);
     width: 100%;
     height: 100%;
@@ -102,7 +99,7 @@ button[onclick="Utils.toggle()"] {
     align-items: center;
 }
 
-button[onclick="Utils.toggle()"].on {
+button#back-button {
     color: #fff;
     background: var(--red-you-tube);
     width: 40px;
@@ -169,10 +166,7 @@ body::-webkit-scrollbar-thumb {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
-    /*display: inline-grid;
-    grid-template-columns: repeat(var(--frames-tumbnails), 1fr);*/
-    
+    gap: 20px; 
 }
 
 .tumbnail > img{

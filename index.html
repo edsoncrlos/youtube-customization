@@ -13,8 +13,8 @@
     
     <header>
         <div class="menu-section">
-            <div>
-                <button type="button" onclick="Utils.toggle()"><i class="ph-arrow-left ph-2x"></i></button>
+            <div class="off">
+                <button type="button" id="back-button"><i class="ph-arrow-left ph-2x"></i></button>
             </div>
             <div class="theme" onclick="Utils.toggleTheme()">
                 <button type="button"></button>
@@ -22,8 +22,17 @@
         </div>
     </header>
 
-    <div class="tumbnails">
+    <div class="tumbnails off">
         
+    </div>
+
+    <div class="menu">
+        <div class="input-group">
+            <button type="button" onclick="Controler.menuForForm()">Adicionar vídeo</button> 
+        </div>
+        <div class="input-group off">
+            <button type="button" onclick="Controler.showTumbnails()">Histórico de vídeos</button>
+        </div>      
     </div>
 
     <div id="form" class="off">
@@ -35,7 +44,7 @@
                     type="text"
                     placeholder="Link do vídeo"
                     id="url-link"
-                   
+                    
                     name="url-link"
                 />
             </div>
@@ -65,12 +74,12 @@
             </div>
             
             <div class="input-group actions">
-               <button>Iniciar video</button>
+               <button>Iniciar vídeo</button>
             </div>
         </form>
     </div>
 
-    <div class="yt-video-background">
+    <div class="yt-video-background off">
         <div class="yt-video">
             
         </div>

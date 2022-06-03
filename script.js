@@ -2,7 +2,7 @@ let isThemeDark = true;
 const html = document.querySelector("html"); 
 
 const Videos = [
- 
+    
 ]
 
 const getStyle = (element, style) =>
@@ -95,6 +95,20 @@ const Controler = {
         Utils.toggleBackButton()
     },
 
+    ytVideoForForm() {
+        Controler.togglePag('.yt-video-background','#form')
+        backButton.removeEventListener("click", Controler.ytVideoForForm)
+        backButton.addEventListener('click', Controler.formForMenu)
+        
+        Video.clearVideo()
+    },
+
+    formForYtVideo() {
+        Controler.togglePag('#form','.yt-video-background') 
+        backButton.removeEventListener('click', Controler.formForMenu)
+        backButton.addEventListener('click', Controler.ytVideoForForm)
+    },
+
     thereVideo() {
         if (Videos.length > 0) {
             
@@ -127,15 +141,21 @@ const Controler = {
 const Video = {
     tumbs: document.querySelector('.tumbnails'),
 
-    addVideo() {
-        
+    addVideo(ObjectVideos) {
+        const {link, width} = ObjectVideos;
+
         const height = width*9/16;
-        const link = Video.getLink(urlLink);
         const ytVideo = document.querySelector('.yt-video')
         
         ytVideo.innerHTML = `
-            <iframe width="${width}" height="${height}" src="https://www.youtube.com/embed/${link}?start=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="${width}" height="${height}" src="https://www.youtube.com/embed/${link}?start=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         `
+    },
+    
+    clearVideo() {
+        const ytVideo = document.querySelector('.yt-video')
+        
+        ytVideo.innerHTML = "";
     },
 
     addTumbnail(link) {
@@ -180,20 +200,32 @@ const Form = {
         return link;
     },
 
-    validateFields() {
-        /*const {urlLink, width} = Form.getValues();
-        
-        if (urlLink.trim() === "" || width.trim() === "") {
-            
-        }*/
+    formatValues() {
+        const {link, width} = Form.getValues();
+
+        return {
+            link,
+            width: Number(width)
+        }
     },
 
     submit(event) {
         event.preventDefault()
         
         try {
+            const data = Form.formatValues()
+            const object = Videos.find(object => object.link === data.link)
+            let index = 0;
 
-            Videos.push(Form.getValues())
+            if (object != undefined) {
+                index = Videos.indexOf(object)
+            } else {
+                Videos.push(data)
+                index = Videos.length-1
+            }
+            Video.addVideo(Videos[index])
+            Controler.formForYtVideo()
+
         } catch (error) {
             alert(error.message)
         }

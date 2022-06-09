@@ -2,9 +2,16 @@ let isThemeDark = true;
 let interval;
 const html = document.querySelector("html"); 
 
-const Videos = [
-    
-]
+let Videos;
+
+const Storage = {
+    get() {
+        return JSON.parse(localStorage.getItem("Youtube-customization")) || []
+    },
+    set () {
+        localStorage.setItem("Youtube-customization", JSON.stringify(Videos))
+    }
+}
 
 const getStyle = (element, style) =>
 window
@@ -253,10 +260,11 @@ const Form = {
             } else {
                 Videos.push(data)
                 index = Videos.length-1
+                Storage.set(Videos)
             }
             Video.addVideo(index)
             Controler.formForYtVideo()
-
+            Controler.thereVideo()
         } catch (error) {
             alert(error.message)
         }
@@ -265,6 +273,7 @@ const Form = {
 
 const App = {
     init () {
+        Videos = Storage.get();
         Controler.thereVideo()      
     }
 }

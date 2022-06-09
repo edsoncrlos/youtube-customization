@@ -3,7 +3,7 @@ let interval;
 const html = document.querySelector("html"); 
 
 const Videos = [
-
+    
 ]
 
 const getStyle = (element, style) =>
@@ -168,6 +168,8 @@ const Video = {
             <iframe width="${width}" height="${height}" src="https://www.youtube.com/embed/${link}?start=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             `;
 
+            interval = setInterval(Utils.hideButtons, 4000);
+            html.addEventListener("mousemove", Utils.showButtons);
         } catch (e) {
             console.log(e.message);
         }
@@ -176,6 +178,9 @@ const Video = {
     clearVideo() {
         const ytVideo = document.querySelector('.yt-video');
         ytVideo.innerHTML = "";
+        html.removeEventListener("mousemove", Utils.showButtons);
+
+        clearInterval(interval, 0);
     },
 
     addTumbnail(link, index) {

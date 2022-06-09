@@ -1,8 +1,9 @@
 let isThemeDark = true;
+let interval;
 const html = document.querySelector("html"); 
 
 const Videos = [
-    
+
 ]
 
 const getStyle = (element, style) =>
@@ -54,20 +55,17 @@ Utils = {
         }
         
         clearInterval(interval, 0)
-        interval = setInterval(Utils.hideButtons, 3000);
+        interval = setInterval(Utils.hideButtons, 4000);
     },
     
     hideButtons () {
-        const backButton = document.querySelector('#back-button')
-        if (backButton.classList.contains('on')) {
+        const backButton = document.querySelector('.menu-section')
+        if (!backButton.classList.contains('off')) {
             const hideHeader = document.querySelector('.menu-section');
             hideHeader.classList.add('off');
         }
     },
 }
-
-//let interval = setInterval(Utils.hideButtons, 3000);
-//html.addEventListener("mousemove", Utils.showButtons);
 
 const backButton = document.querySelector('#back-button')
 
@@ -109,6 +107,22 @@ const Controler = {
         backButton.addEventListener('click', Controler.ytVideoForForm)
     },
 
+    ytVideoForTumbnails() {
+        Controler.togglePag('.yt-video-background', '.tumbnails') 
+        backButton.removeEventListener('click', Controler.ytVideoForTumbnails)
+        backButton.addEventListener('click', Controler.hideTumbnails)
+        
+        Video.clearVideo()
+    },
+
+    tumbnailsForYtVideo(index) {
+        Controler.togglePag('.tumbnails','.yt-video-background');
+        backButton.removeEventListener('click', Controler.hideTumbnails);
+        backButton.addEventListener('click', Controler.ytVideoForTumbnails);
+        console.log("1 -"+ Videos[index].link + " " + Videos[index].width);
+        Video.addVideo(index);
+    },
+
     thereVideo() {
         if (Videos.length > 0) {
             
@@ -121,54 +135,66 @@ const Controler = {
     
     hideTumbnails() {
         Controler.togglePag('.tumbnails', '.menu')
-
+        Video.clearTumbnails()
+        
         backButton.removeEventListener("click", Controler.hideTumbnails)
+       
         Utils.toggleBackButton()
+      
     },
 
     showTumbnails() {
         for (let index = 0; index < Videos.length; index++) {
-            Video.addTumbnail(Videos[index].link)
+            Video.addTumbnail(Videos[index].link, index)
         }
         Controler.togglePag('.menu', '.tumbnails')
 
         backButton.addEventListener("click", Controler.hideTumbnails)
         Utils.toggleBackButton()
     }
-
 }
 
 const Video = {
     tumbs: document.querySelector('.tumbnails'),
 
-    addVideo(ObjectVideos) {
-        const {link, width} = ObjectVideos;
-
-        const height = width*9/16;
-        const ytVideo = document.querySelector('.yt-video')
+    addVideo(index) {
+        try {
+            const {link, width} = Videos[index];
         
-        ytVideo.innerHTML = `
-        <iframe width="${width}" height="${height}" src="https://www.youtube.com/embed/${link}?start=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        `
+            const height = width*9/16;
+            const ytVideo = document.querySelector('.yt-video');
+            
+            ytVideo.innerHTML = `
+            <iframe width="${width}" height="${height}" src="https://www.youtube.com/embed/${link}?start=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            `;
+
+        } catch (e) {
+            console.log(e.message);
+        }
     },
     
     clearVideo() {
-        const ytVideo = document.querySelector('.yt-video')
-        
+        const ytVideo = document.querySelector('.yt-video');
         ytVideo.innerHTML = "";
     },
 
-    addTumbnail(link) {
+    addTumbnail(link, index) {
         const tumb = document.createElement('div')
         tumb.classList.add('tumbnail')
 
-        tumb.innerHTML = Video.innerHTMLTumbnail(link)
+        tumb.innerHTML = Video.innerHTMLTumbnail(link, index)
         Video.tumbs.appendChild(tumb)
     },
 
-    innerHTMLTumbnail(link) {
+    clearTumbnails() {
+        const tumbnails = document.querySelector('.tumbnails')
+
+        tumbnails.innerHTML = ""
+    },
+
+    innerHTMLTumbnail(link, index) {
         return`
-            <img src="https://img.youtube.com/vi/${link}/0.jpg">
+            <img onclick="Video.addVideo(Controler.tumbnailsForYtVideo(${index}))" src="https://img.youtube.com/vi/${link}/0.jpg">
         `
     }
 }
@@ -223,7 +249,7 @@ const Form = {
                 Videos.push(data)
                 index = Videos.length-1
             }
-            Video.addVideo(Videos[index])
+            Video.addVideo(index)
             Controler.formForYtVideo()
 
         } catch (error) {
@@ -234,8 +260,7 @@ const Form = {
 
 const App = {
     init () {
-        Controler.thereVideo()
-        
+        Controler.thereVideo()      
     }
 }
 

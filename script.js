@@ -2,14 +2,12 @@ let isThemeDark = true;
 let interval;
 const html = document.querySelector("html"); 
 
-let Videos;
-
 const Storage = {
     get() {
         return JSON.parse(localStorage.getItem("Youtube-customization")) || []
     },
     set () {
-        localStorage.setItem("Youtube-customization", JSON.stringify(Videos))
+        localStorage.setItem("Youtube-customization", JSON.stringify(Video.allVideos))
     }
 }
 
@@ -126,12 +124,12 @@ const Controler = {
         Controler.togglePag('.tumbnails','.yt-video-background');
         backButton.removeEventListener('click', Controler.hideTumbnails);
         backButton.addEventListener('click', Controler.ytVideoForTumbnails);
-        console.log("1 -"+ Videos[index].link + " " + Videos[index].width);
+   
         Video.addVideo(index);
     },
 
     thereVideo() {
-        if (Videos.length > 0) {
+        if (Video.allVideos.length > 0) {
             
             const buttonVideoHistory = document.querySelector('.menu div:nth-child(2)')
             if (buttonVideoHistory.classList.contains('off')) {
@@ -151,8 +149,8 @@ const Controler = {
     },
 
     showTumbnails() {
-        for (let index = 0; index < Videos.length; index++) {
-            Video.addTumbnail(Videos[index].link, index)
+        for (let index = 0; index < Video.allVideos.length; index++) {
+            Video.addTumbnail(Video.allVideos[index].link, index)
         }
         Controler.togglePag('.menu', '.tumbnails')
 
@@ -162,11 +160,12 @@ const Controler = {
 }
 
 const Video = {
+    allVideos: Storage.get(),
     tumbs: document.querySelector('.tumbnails'),
 
     addVideo(index) {
         try {
-            const {link, width} = Videos[index];
+            const {link, width} = Video.allVideos[index];
         
             const height = width*9/16;
             const ytVideo = document.querySelector('.yt-video');
@@ -252,15 +251,15 @@ const Form = {
         
         try {
             const data = Form.formatValues()
-            const object = Videos.find(object => object.link === data.link)
+            const object = Video.allVideos.find(object => object.link === data.link)
             let index = 0;
 
             if (object != undefined) {
-                index = Videos.indexOf(object)
+                index = Video.allVideos.indexOf(object)
             } else {
-                Videos.push(data)
-                index = Videos.length-1
-                Storage.set(Videos)
+                Video.allVideos.push(data)
+                index = Video.allVideos.length-1
+                Storage.set(Video.allVideos)
             }
             Video.addVideo(index)
             Controler.formForYtVideo()
@@ -273,7 +272,6 @@ const Form = {
 
 const App = {
     init () {
-        Videos = Storage.get();
         Controler.thereVideo()      
     }
 }

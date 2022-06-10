@@ -172,8 +172,33 @@ body::-webkit-scrollbar-thumb {
 .tumbnail > img{
     width: 300px;
     height: auto;
+    cursor: pointer;
 }
 
 .off {
     display: none;
+}
+
+@media(max-width: 650px) {
+    html {
+        font-size: 50%;
+    }
+
+    .tumbnail > img {
+        width: 250px;
+    }
+}
+
+@media(max-width: 550px) {
+    .tumbnail > img {
+        width: 200px;
+
+    }
+}
+
+@media(max-width: 450px) {
+    .tumbnail > img {
+        width: 140px;
+
+    }
 }

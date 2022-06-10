@@ -45,12 +45,12 @@ input::-webkit-inner-spin-button {
 .input-group button {
     font-size: 2rem;
     color: #fff;
-    padding-left: 3rem;
-    margin: 2rem;
+    padding-left: 1em;
+    margin: 0.5em;
     width: 50%;
     height: 40px;
     background: var(--red-you-tube);
-    border-radius: 2rem;
+    border-radius: 2em;
     display: inline-block;
 }
 
@@ -104,7 +104,7 @@ button#back-button {
     background: var(--red-you-tube);
     width: 40px;
     height: 40px;
-    border-radius: 2rem;
+    border-radius: 2em;
     border: none;
 
     position: absolute;
@@ -118,7 +118,7 @@ button#back-button {
 }
 
 .theme {
-    margin: 2em 2em 0 0;
+    margin: 4em 2em 0 0;
     cursor: pointer;
     width: 52px;
     height: 27px; 

@@ -1,0 +1,13 @@
+.tumbnails {
+    margin-top: 4em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; 
+}
+
+.tumbnail > img{
+    width: 300px;
+    height: auto;
+    cursor: pointer;
+}

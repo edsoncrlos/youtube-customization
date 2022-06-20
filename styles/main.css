@@ -48,19 +48,19 @@ a  {
         font-size: 50%;
     }
 
-    .tumbnail > a > img {
+    .tumbnail > a img {
         width: 250px;
     }
 }
 
 @media(max-width: 550px) {
-    .tumbnail > a > img {
+    .tumbnail > a img {
         width: 200px;
     }
 }
 
 @media(max-width: 450px) {
-    .tumbnail > a > img {
+    .tumbnail > a img {
         width: 140px;
 
     }

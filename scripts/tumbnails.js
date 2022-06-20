@@ -17,8 +17,13 @@ Tumbnails = {
 
     innerHTMLTumbnail(link, index) {
         return`
-            <a href="./yt-video.html">
-                <img onclick="Video.setIndex(${index})" src="https://img.youtube.com/vi/${link}/0.jpg">
+            <a href="./yt-video.html">            
+                <div id="x">
+                    <i class="ph-x ph-4x"></i>
+                </div>
+                <div>
+                    <img onclick="Video.setIndex(${index})" src="https://img.youtube.com/vi/${link}/0.jpg">
+                </div>
             </a>
         `
     }

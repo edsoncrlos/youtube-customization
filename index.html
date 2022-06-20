@@ -19,76 +19,27 @@
     
     <header>
         <div class="menu-section">
-            <div class="off">
-                <button type="button" id="back-button"><i class="ph-arrow-left ph-2x"></i></button>
-            </div>
-            <div class="theme" onclick="Utils.toggleTheme()">
+            
+            <div class="theme" onclick="ToggleTheme.toggleTheme()">
                 <button type="button"></button>
             </div>
         </div>
     </header>
 
-    <div class="tumbnails off"></div>
-
     <div class="menu">
         <div class="input-group">
-            <button type="button" onclick="Controler.menuForForm()">Adicionar vídeo</button> 
+            <button type="button">
+                <a href="./form.html">Adicionar vídeo</a>
+            </button> 
         </div>
         <div class="input-group off">
-            <button type="button" onclick="Controler.showTumbnails()">Histórico de vídeos</button>
+            <button type="button">
+                <a href="./tumbnails.html">Histórico de vídeos</a>    
+            </button>
         </div>      
-    </div>
-
-    <div id="form" class="off">
-        <form action="" onsubmit="Form.submit(event)">
-            <div class="input-group">
-                <label for="url-link" class="sr-only">url do vídeo</label>
-                <input 
-                    autocomplete="off"
-                    type="text"
-                    placeholder="Link do vídeo"
-                    id="url-link"
-                    
-                    name="url-link"
-                />
-            </div>
-            
-            <div class="input-group">
-                <label 
-                    for="select-width"   
-                    class="sr-only"
-                >Seleciona Largura</label>
-                <input 
-                    type="number"
-                    inputmode="numeric"
-                    autocomplete="off"
-                    placeholder="Largura desejada"
-                    id="select-width"
-                  
-                    name="select-width"
-                    list="widths"
-                />
-                
-                <datalist id="widths">
-                    <option>1366</option>
-                    <option>1280</option>
-                    <option>1024</option>
-                    <option>800</option>
-                </datalist>
-            </div>
-            
-            <div class="input-group actions">
-               <button>Iniciar vídeo</button>
-            </div>
-        </form>
-    </div>
-
-    <div class="yt-video-background off">
-        <div class="yt-video">
-            
-        </div>
     </div>
         
     <script src="../scripts/script.js"></script>
+    <script src="../scripts/toggleTheme.js"></script>
 </body>
 </html>

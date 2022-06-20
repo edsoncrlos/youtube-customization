@@ -20,6 +20,11 @@ body {
     flex-direction: column;
 }
 
+a  {
+    text-decoration: none;
+    color: white;
+}
+
 /*basis classes*/
 .sr-only {
     position: absolute;
@@ -43,19 +48,19 @@ body {
         font-size: 50%;
     }
 
-    .tumbnail > img {
+    .tumbnail > a > img {
         width: 250px;
     }
 }
 
 @media(max-width: 550px) {
-    .tumbnail > img {
+    .tumbnail > a > img {
         width: 200px;
     }
 }
 
 @media(max-width: 450px) {
-    .tumbnail > img {
+    .tumbnail > a > img {
         width: 140px;
 
     }

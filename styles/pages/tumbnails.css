@@ -12,7 +12,11 @@
     cursor: pointer;
 }
 
-.tumbnail > a img {
+.tumbnail > a img:hover {
+    transform: translateY(-7px);
+}
+
+.tumbnails.on a img {
     opacity: 0.5;
 }
 
@@ -29,4 +33,14 @@ i.ph-x {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+#edit {
+    all: unset;
+    color: var(--bg-oppsite);
+    position: absolute;
+    right: 0;
+    margin: 4.5em 2.5em 0 0;
+    font-size: 2rem;
+    cursor: pointer;
 }

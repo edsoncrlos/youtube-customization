@@ -18,7 +18,7 @@ Tumbnails = {
 
     innerHTMLTumbnail(link, index) {
         return`
-            <a href="./yt-video.html">            
+            <a href="yt-video.html">            
                 <div id="icon-x" class="off">
                     <i class="ph-x ph-4x"></i>
                 </div>
@@ -32,14 +32,25 @@ Tumbnails = {
     toggleMenuForExclusion() {
         const tumbnails = document.querySelector(".tumbnails");
         const edit = document.querySelector("#edit")
-        const iconX = document.querySelectorAll("#icon-x");
-        
+        const tumbs = document.querySelectorAll(".tumbnail a");
+
         tumbnails.classList.toggle("on", Tumbnails.isActiveExclusion);
 
         Tumbnails.isActiveExclusion = !Tumbnails.isActiveExclusion;
 
-        iconX.forEach((x) => {
-            x.classList.toggle("off", Tumbnails.isActiveExclusion);
+        tumbs.forEach((tumb, index) => {
+            const iconX = tumb.firstElementChild;
+            const image = tumb.lastElementChild.firstElementChild;
+
+            iconX.classList.toggle("off", Tumbnails.isActiveExclusion);
+            
+            if (Tumbnails.isActiveExclusion) {
+                image.setAttribute("onclick", `Video.setIndex(${index})`);
+                tumb.href = "./yt-video.html";
+            } else {
+                image.setAttribute("onclick", `Video.delete(${index})`);
+                tumb.removeAttribute("href");
+            }
         })
 
         if (!Tumbnails.isActiveExclusion) {
@@ -53,3 +64,5 @@ Tumbnails = {
 Tumbnails.showTumbnails()
 
 Controler.setLinkReturn("./tumbnails.html");
+
+Tumbnails.toggleMenuForExclusion();

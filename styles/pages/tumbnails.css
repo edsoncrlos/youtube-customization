@@ -1,5 +1,5 @@
 .tumbnails {
-    margin-top: 10em;
+    margin-top: 12em;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -20,7 +20,7 @@
     position: relative;
 }
 
-#x {
+#icon-x {
     color: var(--color-x);
 }
 

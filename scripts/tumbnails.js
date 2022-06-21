@@ -58,11 +58,17 @@ Tumbnails = {
         } else {
             edit.innerText = "Editar";
         }
+    },
+
+    refreshTumbs () {
+        Tumbnails.tumbs.innerHTML = "";
+
+        Tumbnails.showTumbnails();
+        Tumbnails.isActiveExclusion =  true;
+        Tumbnails.toggleMenuForExclusion();
     }
 }
 
 Tumbnails.showTumbnails()
 
 Controler.setLinkReturn("./tumbnails.html");
-
-Tumbnails.toggleMenuForExclusion();

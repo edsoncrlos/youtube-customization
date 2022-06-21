@@ -44,6 +44,12 @@ Utils = {
 const Video = {
     allVideos: Storage.get(), 
 
+    delete (index) {
+        Video.allVideos.splice(index, 1);
+        Storage.set();
+        Tumbnails.refreshTumbs();
+    },
+
     getIndex () {
         return Utils.getValueCookie("index");
     },

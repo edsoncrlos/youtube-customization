@@ -20,13 +20,13 @@ const getStyle = (element, style) =>
 darkTheme = {
     bg: getStyle(html, "--bg"),
     bgToggle: getStyle(html, "--bg-toggle"),
-    colorX: getStyle(html, "--color-x")
+    bgOppsite: getStyle(html, "--bg-oppsite")
 }
 
 lightTheme = {
     bg: "#fff",
     bgToggle: "gray",
-    colorX: "#000"
+    bgOppsite: "#000"
 }
 
 

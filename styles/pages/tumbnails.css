@@ -12,7 +12,7 @@
     cursor: pointer;
 }
 
-.tumbnail > a img:hover {
+.tumbnail:hover {
     transform: translateY(-7px);
 }
 

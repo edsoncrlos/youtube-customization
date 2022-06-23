@@ -28,7 +28,7 @@ const Form = {
     formatValues() {
         const {link, width} = Form.getValues();
 
-        if (link == undefined && width==undefined) {
+        if (link == undefined || width==undefined) {
             throw new Error('Not exist value')
         }
         return {

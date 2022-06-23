@@ -2,7 +2,7 @@ let isThemeDark = true;
 
 const StorageColor = {
     getColors() {
-        return JSON.parse(localStorage.getItem("Youtube-customization-theme")) || 0;
+        return JSON.parse(localStorage.getItem("Youtube-customization-theme")) || darkTheme;
     },
 
     setColors(indexColor) {

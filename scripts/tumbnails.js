@@ -18,7 +18,7 @@ Tumbnails = {
 
     innerHTMLTumbnail(link, index) {
         return`
-            <a href="yt-video.html">            
+            <a href="./yt-video.html">            
                 <div id="icon-x" class="off">
                     <i class="ph-x ph-4x"></i>
                 </div>

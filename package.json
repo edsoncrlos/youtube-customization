@@ -1,0 +1,26 @@
+{
+  "name": "youtube-customization",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/server.js",
+  "scripts": {
+    "start": "nodemon ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edsoncrlos/youtube-customization.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edsoncrlos/youtube-customization/issues"
+  },
+  "homepage": "https://github.com/edsoncrlos/youtube-customization#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.18"
+  }
+}

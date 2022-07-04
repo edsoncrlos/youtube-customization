@@ -18,7 +18,7 @@ Tumbnails = {
 
     innerHTMLTumbnail(link, index) {
         return`
-            <a href="./yt-video.html">            
+            <a href="/yt-video">            
                 <div id="icon-x" class="off">
                     <i class="ph-x ph-4x"></i>
                 </div>
@@ -46,7 +46,7 @@ Tumbnails = {
             
             if (Tumbnails.isActiveExclusion) {
                 image.setAttribute("onclick", `Video.setIndex(${index})`);
-                tumb.href = "./yt-video.html";
+                tumb.href = "/yt-video";
             } else {
                 image.setAttribute("onclick", `Video.delete(${index})`);
                 tumb.removeAttribute("href");
@@ -71,4 +71,4 @@ Tumbnails = {
 
 Tumbnails.showTumbnails()
 
-Controler.setLinkReturn("./tumbnails.html");
+Controler.setLinkReturn("/tumbnails");

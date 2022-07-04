@@ -56,7 +56,7 @@ const Form = {
             Video.setIndex(index);
             Controler.thereVideo()
             Storage.set(Video.allVideos);
-            window.location.href = "./yt-video.html"
+            window.location.href = "/yt-video"
         } catch (error) {
             console.log(error.message)
         }
@@ -64,4 +64,4 @@ const Form = {
 }
 
 
-Controler.setLinkReturn("./form.html");
+Controler.setLinkReturn("/form");

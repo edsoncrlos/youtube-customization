@@ -2,19 +2,19 @@ const express = require('express');
 const routes = express.Router();
 
 routes.get('/', (req, res) => {
-    res.sendFile(__dirname+"/views/index.html")
+    res.render("index")
 })
 
 routes.get('/form', (req, res) => {
-    res.sendFile(__dirname+"/views/form.html")
+    res.render("form")
 })
 
 routes.get('/tumbnails', (req, res) => {
-    res.sendFile(__dirname+"/views/tumbnails.html")
+    res.render("tumbnails")
 })
 
 routes.get('/yt-Video', (req, res) => {
-    res.sendFile(__dirname+"/views/yt-Video.html")
+    res.render("yt-Video")
 })
 
 module.exports = routes;

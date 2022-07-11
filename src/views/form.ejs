@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/styles/partials/form.css">
+    <link rel="stylesheet" href="/styles/partials/inputs.css">
+    <link rel="stylesheet" href="/styles/partials/scrollbar.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    
+    <script src="https://unpkg.com/phosphor-icons"></script>
+
+    <title>youtube customization</title>
+</head>
+<body>
+    
+    <header>
+        <div class="menu-section">
+            <div>
+                <a href="/">
+                    <button type="button" id="back-button"><i class="ph-arrow-left ph-2x"></i></button>
+                </a>
+            </div>
+            <div class="theme" onclick="ToggleTheme.toggleTheme()">
+                <button type="button"></button>
+            </div>
+        </div>
+    </header>
+
+    <div id="form">
+        <form action="" onsubmit="Form.submit(event)">
+            <div class="input-group">
+                <label for="url-link" class="sr-only">url do vídeo</label>
+                <input 
+                    autocomplete="off"
+                    type="text"
+                    placeholder="Link do vídeo"
+                    id="url-link"
+                    
+                    name="url-link"
+                />
+            </div>
+            
+            <div class="input-group">
+                <label 
+                    for="select-width"   
+                    class="sr-only"
+                >Seleciona Largura</label>
+                <input 
+                    type="number"
+                    inputmode="numeric"
+                    autocomplete="off"
+                    placeholder="Largura desejada"
+                    id="select-width"
+                  
+                    name="select-width"
+                    list="widths"
+                />
+                
+                <datalist id="widths">
+                    <option>1366</option>
+                    <option>1280</option>
+                    <option>1024</option>
+                    <option>800</option>
+                </datalist>
+            </div>
+            
+            <div class="input-group actions">
+                <button>
+                    <a>
+                        Iniciar vídeo
+                    </a>
+                </button>
+            </div>
+        </form>
+    </div>
+        
+    <script src="/scripts/script.js"></script>
+    <script src="/scripts/toggleTheme.js"></script>
+    <script src="/scripts/form.js"></script>
+</body>
+</html>

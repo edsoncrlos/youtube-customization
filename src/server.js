@@ -2,6 +2,10 @@ const express = require('express');
 const server = express();
 const routes = require("./routes");
 
+server.set('view engine', 'ejs')
+
+server.set('views', __dirname+'/views')
+
 server.use(express.static("public"))
 
 server.use(routes);

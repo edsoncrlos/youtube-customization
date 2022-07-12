@@ -13,8 +13,8 @@ routes.get('/tumbnails', (req, res) => {
     res.render("tumbnails")
 })
 
-routes.get('/yt-Video', (req, res) => {
-    res.render("yt-Video")
+routes.get('/yt-video', (req, res) => {
+    res.render("yt-video")
 })
 
 module.exports = routes;

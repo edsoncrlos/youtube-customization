@@ -1,73 +1,73 @@
 let isThemeDark = true;
 
 const StorageColor = {
-    getColors() {
-        return JSON.parse(localStorage.getItem("Youtube-customization-theme")) || darkTheme;
-    },
+	getColors() {
+		return JSON.parse(localStorage.getItem('Youtube-customization-theme')) || darkTheme;
+	},
 
-    setColors(indexColor) {
-        localStorage.setItem("Youtube-customization-theme", JSON.stringify(indexColor))
-    }
-}
+	setColors(indexColor) {
+		localStorage.setItem('Youtube-customization-theme', JSON.stringify(indexColor));
+	}
+};
 
 const getStyle = (element, style) =>
-    window
-    .getComputedStyle(element)
-    .getPropertyValue(style)
+	window
+		.getComputedStyle(element)
+		.getPropertyValue(style);
 
 
 
-darkTheme = {
-    bg: getStyle(html, "--bg"),
-    bgToggle: getStyle(html, "--bg-toggle"),
-    bgOppsite: getStyle(html, "--bg-oppsite")
-}
+const darkTheme = {
+	bg: getStyle(html, '--bg'),
+	bgToggle: getStyle(html, '--bg-toggle'),
+	bgOppsite: getStyle(html, '--bg-oppsite')
+};
 
-lightTheme = {
-    bg: "#fff",
-    bgToggle: "gray",
-    bgOppsite: "#000"
-}
+const lightTheme = {
+	bg: '#fff',
+	bgToggle: 'gray',
+	bgOppsite: '#000'
+};
 
 
-const transformKey = key => "--" + key.replace(/([A-Z])/, "-$1").toLowerCase()
+const transformKey = key => '--' + key.replace(/([A-Z])/, '-$1').toLowerCase();
 
 const ToggleTheme = {
-    theme: StorageColor.getColors(),
+	theme: StorageColor.getColors(),
 
-    changeColors (colors) {
-        Object.keys(colors).map(key =>
-            html.style.setProperty(transformKey(key), colors[key])
-        )
-    },
+	changeColors (colors) {
+		Object.keys(colors).map(key =>
+			html.style.setProperty(transformKey(key), colors[key])
+		);
+	},
 
-    toggleTheme () {
-        const backgroundToggleTheme = document.querySelector('.theme')
+	toggleTheme () {
+		const backgroundToggleTheme = document.querySelector('.theme');
         
-        if (!isThemeDark) {
-            ToggleTheme.changeColors(darkTheme);
-            StorageColor.setColors(darkTheme)
-        } else {
-            ToggleTheme.changeColors(lightTheme);
-            StorageColor.setColors(lightTheme)
-        }
+		if (!isThemeDark) {
+			ToggleTheme.changeColors(darkTheme);
+			StorageColor.setColors(darkTheme);
+		} else {
+			ToggleTheme.changeColors(lightTheme);
+			StorageColor.setColors(lightTheme);
+		}
         
-        backgroundToggleTheme.classList.toggle("on", isThemeDark)
-        isThemeDark = !isThemeDark;
-    },
+		backgroundToggleTheme.classList.toggle('on', isThemeDark);
+		isThemeDark = !isThemeDark;
+	},
     
-    currentTheme () {
-        let isDark = true;
+	currentTheme () {
+		let isDark = true;
 
-        Object.keys(ToggleTheme.theme).map(key => {
-            if (ToggleTheme.theme[key] != darkTheme[key] && isDark) {
-                isDark = false;
-            }
-        })
+		Object.keys(ToggleTheme.theme).map(key => {
+			if (ToggleTheme.theme[key] != darkTheme[key] && isDark) {
+				isDark = false;
+			}
+		});
 
-        if (!isDark) 
-            ToggleTheme.toggleTheme()  
-    }
-}
+		if (!isDark) 
+			ToggleTheme.toggleTheme();  
+	}
+};
 
-ToggleTheme.currentTheme()
+ToggleTheme.currentTheme();

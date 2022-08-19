@@ -1,87 +1,23 @@
-let interval;
-const html = document.querySelector('html'); 
+import { Tumbnails } from './tumbnails.js';
+import { ytVideo, Controler } from './video.js';
+import { Form } from './form.js';
 
-const Storage = {
-	get() {
-		return JSON.parse(localStorage.getItem('Youtube-customization')) || [];
-	},
-	set () {
-		localStorage.setItem('Youtube-customization', JSON.stringify(Video.allVideos));
-	}
-};
+const route = document.URL.split('/')[3];
+if (route === '') {
+	Controler.thereVideo();
 
-const Utils = {
-	showButtons () {
-		const showHeader = document.querySelector('.menu-section');
-		if (showHeader.classList.contains('off')) {
-			showHeader.classList.remove('off');     
-		}
-        
-		clearInterval(interval, 0);
-		interval = setInterval(Utils.hideButtons, 4000);
-	},
-    
-	hideButtons () {
-		const backButton = document.querySelector('.menu-section');
-		if (!backButton.classList.contains('off')) {
-			const hideHeader = document.querySelector('.menu-section');
-			hideHeader.classList.add('off');
-		}
-	},
+} else if (route.indexOf('tumbnails') !== -1) {
+	Tumbnails.showTumbnails();
+	Controler.setLinkReturn('/tumbnails');
+	Tumbnails.buttonToggleExclusion.addEventListener('click', Tumbnails.toggleMenuForExclusion);
 
-	getValueCookie (property) {
-		const cookies = document.cookie.split(';') || '';
 
-		for (let index = 0; index < cookies.length; index++) {
-			let propertyValue = cookies[index].trim().split('=');
-            
-			if (propertyValue[0] == property)
-				return propertyValue[1];           
-		}
-	}
-};
-
-const Video = {
-	allVideos: Storage.get(), 
-
-	delete (index) {
-		Video.allVideos.splice(index, 1);
-		Storage.set();
-		Tumbnails.refreshTumbs();
-	},
-
-	getIndex () {
-		return Utils.getValueCookie('index');
-	},
-    
-	setIndex (index) {
-		document.cookie = `index=${index}`;
-	}
-};
-
-const Controler = {
-    
-	thereVideo() {
-		try {
-			if (Video.allVideos.length > 0) {
-                
-				const buttonVideoHistory = document.querySelector('.menu div:nth-child(2)');
-				if (buttonVideoHistory.classList.contains('off')) {
-					buttonVideoHistory.classList.remove('off');
-				}
-			}
-		} catch (e) {
-			console.log(e.message);
-		}
-	},
-
-	getLinkReturn () {
-		return Utils.getValueCookie('returnLink');
-	},
-
-	setLinkReturn (link) {
-		document.cookie = `returnLink=${link}`;
-	}
-};
-
-Controler.thereVideo();
+} else if (route.indexOf('form') !== -1) {
+	Controler.setLinkReturn('/form');
+	const form = document.querySelector('#form form');
+	form.addEventListener('submit', (event) => Form.submit(event));
+	
+} else if (route.indexOf('yt-video') !== -1) {
+	ytVideo.addVideo();
+	ytVideo.returnLink();
+}

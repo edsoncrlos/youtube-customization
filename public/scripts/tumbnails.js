@@ -1,5 +1,8 @@
-const Tumbnails = {
+import { Video } from './video.js';
+
+export const Tumbnails = {
 	tumbs: document.querySelector('.tumbnails'),
+	buttonToggleExclusion: document.querySelector('#edit'),
 	isActiveExclusion: true,    
 
 	showTumbnails() {
@@ -11,19 +14,20 @@ const Tumbnails = {
 	addTumbnail(link, index) {
 		const tumb = document.createElement('div');
 		tumb.classList.add('tumbnail');
-
-		tumb.innerHTML = Tumbnails.innerHTMLTumbnail(link, index);
+		
+		tumb.innerHTML = Tumbnails.innerHTMLTumbnail(link);
+		tumb.onclick = () => Video.setIndex(index);
 		Tumbnails.tumbs.appendChild(tumb);
 	},
 
-	innerHTMLTumbnail(link, index) {
+	innerHTMLTumbnail(link) {
 		return`
             <a href="/yt-video">            
                 <div id="icon-x" class="off">
                     <i class="ph-x ph-4x"></i>
                 </div>
                 <div>
-                    <img onclick="Video.setIndex(${index})" src="https://img.youtube.com/vi/${link}/0.jpg">
+                    <img src="https://img.youtube.com/vi/${link}/0.jpg">
                 </div>
             </a>
         `;
@@ -40,15 +44,14 @@ const Tumbnails = {
 
 		tumbs.forEach((tumb, index) => {
 			const iconX = tumb.firstElementChild;
-			const image = tumb.lastElementChild.firstElementChild;
 
 			iconX.classList.toggle('off', Tumbnails.isActiveExclusion);
             
 			if (Tumbnails.isActiveExclusion) {
-				image.setAttribute('onclick', `Video.setIndex(${index})`);
+				tumb.onclick = () => Video.setIndex(index);
 				tumb.href = '/yt-video';
 			} else {
-				image.setAttribute('onclick', `Video.delete(${index})`);
+				tumb.onclick = () => Video.delete(index);
 				tumb.removeAttribute('href');
 			}
 		});
@@ -68,7 +71,3 @@ const Tumbnails = {
 		Tumbnails.toggleMenuForExclusion();
 	}
 };
-
-Tumbnails.showTumbnails();
-
-Controler.setLinkReturn('/tumbnails');

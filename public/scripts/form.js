@@ -1,4 +1,6 @@
-const Form = {
+import { Video, Storage } from './video.js';
+
+export const Form = {
 	urlLink: document.querySelector('input#url-link'),
 	width: document.querySelector('input#select-width'),
 
@@ -36,15 +38,15 @@ const Form = {
 			width: Number(width)
 		};
 	},
-
+	
 	submit(event) {
 		event.preventDefault();
-        
+		
 		try {
 			const data = Form.formatValues();
 			const object = Video.allVideos.find(object => object.link === data.link);
 			let index = 0;
-
+			
 			if (object != undefined) {
 				index = Video.allVideos.indexOf(object);
 				Video.allVideos[index].width = data.width;
@@ -54,14 +56,10 @@ const Form = {
 			}
             
 			Video.setIndex(index);
-			Controler.thereVideo();
-			Storage.set(Video.allVideos);
 			window.location.href = '/yt-video';
+			Storage.set(Video.allVideos);
 		} catch (error) {
 			console.log(error.message);
 		}
 	}
 };
-
-
-Controler.setLinkReturn('/form');

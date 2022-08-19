@@ -1,3 +1,4 @@
+const html = document.querySelector('html'); 
 let isThemeDark = true;
 
 const StorageColor = {

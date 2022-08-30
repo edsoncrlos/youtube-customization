@@ -15,21 +15,10 @@
 </head>
 <body>
     
-    <header>
-        <div class="menu-section">
-            <div>
-                <a href="/">
-                    <button type="button" id="back-button"><i class="ph-arrow-left ph-2x"></i></button>
-                </a>
-            </div>
-            <div class="theme" onclick="ToggleTheme.toggleTheme()">
-                <button type="button"></button>
-            </div>
-        </div>
-    </header>
+    <%- include('parts/page-header', {isbackreturn: true,href: '/'})  %> 
 
     <div id="form">
-        <form action="" onsubmit="Form.submit(event)">
+        <form action="">
             <div class="input-group">
                 <label for="url-link" class="sr-only">url do vídeo</label>
                 <input 
@@ -67,7 +56,7 @@
             </div>
             
             <div class="input-group actions">
-                <button>
+                <button type="submit">
                     <a>
                         Iniciar vídeo
                     </a>
@@ -76,8 +65,8 @@
         </form>
     </div>
         
-    <script src="/scripts/script.js"></script>
+    <script type="module" src="/scripts/script.js"></script>
     <script src="/scripts/toggleTheme.js"></script>
-    <script src="/scripts/form.js"></script>
+    <script type="module" src="/scripts/form.js"></script>
 </body>
 </html>

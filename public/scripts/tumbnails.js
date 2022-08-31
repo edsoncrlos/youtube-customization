@@ -3,6 +3,7 @@ import { Video } from './video.js';
 export const Tumbnails = {
 	tumbs: document.querySelector('.tumbnails'),
 	buttonToggleExclusion: document.querySelector('#edit'),
+	themeIconX: document.querySelector('.theme'),
 	isActiveExclusion: true,    
 
 	showTumbnails() {
@@ -20,11 +21,11 @@ export const Tumbnails = {
 		Tumbnails.tumbs.appendChild(tumb);
 	},
 
-	innerHTMLTumbnail(link) {
+	innerHTMLTumbnail(link) {		
 		return`
             <a href="/yt-video">            
-                <div id="icon-x" class="off">
-                    <i class="ph-x ph-4x"></i>
+                <div class="icon-x off">
+					<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="#fff" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><line x1="200" y1="56" x2="56" y2="200" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="200" y1="200" x2="56" y2="56" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg>
                 </div>
                 <div>
                     <img src="https://img.youtube.com/vi/${link}/0.jpg">
@@ -69,5 +70,15 @@ export const Tumbnails = {
 		Tumbnails.showTumbnails();
 		Tumbnails.isActiveExclusion =  true;
 		Tumbnails.toggleMenuForExclusion();
+	},
+
+	changeColorIconsx () {
+		const html = document.querySelector('html');
+		const colorOppsite = window.getComputedStyle(html).getPropertyValue('--bg-oppsite');
+		const iconsX = document.querySelectorAll('.icon-x svg line');
+
+		iconsX.forEach((X) => {
+			X.style.stroke = colorOppsite;
+		});
 	}
 };

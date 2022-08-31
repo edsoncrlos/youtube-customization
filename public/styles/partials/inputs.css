@@ -43,7 +43,6 @@ input::-webkit-calendar-picker-indicator {
 
 /* return button */
 button#back-button {
-    color: #fff;
     background: var(--red-you-tube);
     width: 40px;
     height: 40px;
@@ -58,6 +57,11 @@ button#back-button {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+button#back-button img {
+    width: 27px;
+    height: 27px;
 }
 
 /* Button to toggle theme */

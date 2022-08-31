@@ -13,9 +13,10 @@ try {
 		} else if (path[0] ==='/tumbnails') {
 			Tumbnails.showTumbnails();
 			Controler.setLinkReturn('/tumbnails');
+			Tumbnails.changeColorIconsx();
+
 			Tumbnails.buttonToggleExclusion.addEventListener('click', Tumbnails.toggleMenuForExclusion);
-		
-		
+			Tumbnails.themeIconX.addEventListener('click', Tumbnails.changeColorIconsx);
 		} else if (path[0] === '/form') {
 			Controler.setLinkReturn('/form');
 			const form = document.querySelector('#form form');

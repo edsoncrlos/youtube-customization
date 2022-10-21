@@ -24,15 +24,14 @@
     position: relative;
 }
 
-#icon-x {
-    color: var(--bg-oppsite);
-}
-
-i.ph-x {
+.icon-x svg {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    
+    width: 40px;
+    height: 40px;
 }
 
 #edit {

@@ -1,0 +1,16 @@
+<header>
+    <div class="menu-section">
+    <% if (typeof((isbackreturn)) != 'undefined' && isbackreturn) { %>
+        <div>
+            <a href="<%= typeof href != 'undefined' ? href : '' %>">
+                <button type="button" id="back-button">
+                    <img src="/images/arrow-left.svg" alt="">
+                </button>
+            </a>
+        </div>
+    <% } %> 
+        <div class="theme" onclick="ToggleTheme.toggleTheme()">
+            <button type="button"></button>
+        </div>
+    </div>
+</header>

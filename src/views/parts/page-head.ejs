@@ -1,0 +1,17 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/partials/inputs.css">
+    <link rel="stylesheet" href="/styles/partials/scrollbar.css">
+    
+    <% if (typeof(stylesheets) != 'undefined' ) { %> 
+        <% stylesheets.forEach((path) => { %>
+            <link rel="stylesheet" href="<%=path%>">
+        <% }); %>
+    <% } %> 
+    
+    <title><%= typeof title != 'undefined' ? title : 'Page title'%></title>
+</head>

@@ -1,8 +1,8 @@
 <header>
     <div class="menu-section">
-    <% if (isbackreturn) { %>
+    <% if (typeof((isbackreturn)) != 'undefined' && isbackreturn) { %>
         <div>
-            <a href="<%= href %>">
+            <a href="<%= typeof href != 'undefined' ? href : '' %>">
                 <button type="button" id="back-button">
                     <img src="/images/arrow-left.svg" alt="">
                 </button>

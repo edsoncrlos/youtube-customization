@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="/styles/partials/inputs.css">
     <link rel="stylesheet" href="/styles/partials/scrollbar.css">
     
-    <% stylesheets.forEach((path) => { %>
-        <link rel="stylesheet" href="<%=path%>">
-    <% }); %>
+    <% if (typeof(stylesheets) != 'undefined' ) { %> 
+        <% stylesheets.forEach((path) => { %>
+            <link rel="stylesheet" href="<%=path%>">
+        <% }); %>
+    <% } %> 
     
-    <title><%= title %></title>
+    <title><%= typeof title != 'undefined' ? title : 'Page title'%></title>
 </head>

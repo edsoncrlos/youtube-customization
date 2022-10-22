@@ -7,13 +7,24 @@
 .input-group button {
     font-size: 2rem;
     color: #fff;
-    padding-left: 1em;
     margin: 0.5em;
     width: 50%;
     height: 40px;
     background: var(--red-you-tube);
     border-radius: 2em;
     display: inline-block;
+}
+
+.input-group input {
+    padding-left: 1em;
+}
+
+button a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    border-radius: inherit;
 }
 
 .input-group:hover input,

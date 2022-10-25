@@ -96,7 +96,19 @@ export const ytVideo = {
 			const ytVideo = document.querySelector('.yt-video');
             
 			ytVideo.innerHTML = `
-            <iframe width="${width}" height="${height}" src="https://www.youtube.com/embed/${link}?start=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div id="video">
+                    <div class="corner top left"></div>
+                    <div class="side horizontal top"></div>
+                    <div class="corner top right"></div>
+                    <div class="side vertical left"></div>
+                    
+                    <iframe width="${width}" height="${height}" src="https://www.youtube.com/embed/${link}?start=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    
+                    <div class="side vertical right"></div>
+                    <div class="corner bottom left"></div>
+                    <div class="side horizontal bottom"></div>
+                    <div class="corner bottom right"></div>
+                </div>
             `;
 
 			interval = setInterval(Utils.hideButtons, 4000);
@@ -110,5 +122,35 @@ export const ytVideo = {
 		const anchorHeaderYtVideo = document.querySelector('.menu-section div a');
 
 		anchorHeaderYtVideo.href = Controler.getLinkReturn();
+	},
+	
+	resize (positionMouseAxisX, isCornerLeft = false) {
+		const video = document.querySelector('#video iframe');
+
+		const initAxis = Number(video.getBoundingClientRect().x);
+		
+		const width = Math.abs(isCornerLeft 
+			? (initAxis - positionMouseAxisX) + video.getBoundingClientRect().width 
+			: (initAxis - positionMouseAxisX)
+		);
+	
+		const height = width*9/16;
+
+		video.setAttribute('width', `${width}px`);
+		video.setAttribute('height', `${height}px`);
+	},
+
+	addDragListener() {
+		const corners = document.querySelectorAll('.corner');
+
+		corners.forEach((corner) => {
+			
+			corner.addEventListener('drag', (e) => {
+	
+				if (e.clientX != 0) {
+					ytVideo.resize(e.clientX, corner.classList.contains('left'));
+				}
+			});
+		});
 	}
 };

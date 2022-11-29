@@ -25,6 +25,7 @@ try {
 		} else if (path[0] === '/yt-video') {
 			ytVideo.addVideo();
 			ytVideo.returnLink();
+			ytVideo.addDragListener();
 		}		
 	} else {
 		throw new Error('invalid URL');

@@ -1,12 +1,48 @@
+:root {
+    --sizing-box: 10px;
+}
+
 .yt-video {
     position: absolute;   
 }
 
-main  {
+main {
     width: 100vw;
     height: 100vh;
 
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#video {
+    display: grid;
+    grid-template-columns: var(--sizing-box) 1fr var(--sizing-box);
+    grid-template-rows: var(--sizing-box) 1fr var(--sizing-box);
+
+    justify-content: flex-start;
+    overflow-x: hidden;
+}
+
+.corner {
+    height: var(--sizing-box);
+    width: var(--sizing-box);
+}
+
+.corner.top.left,
+.corner.bottom.right {
+    cursor: nwse-resize;
+}
+
+.corner.bottom.left, 
+.corner.top.right {
+    cursor: nesw-resize;
+}
+
+.horizontal {
+    height: var(--sizing-box);
+}
+
+.vertical {
+    width: var(--sizing-box);
 }

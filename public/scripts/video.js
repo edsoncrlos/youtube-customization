@@ -61,7 +61,7 @@ export const Controler = {
 	},
 
 	getLinkReturn () {
-		return Utils.getValueCookie('returnLink');
+		return Utils.getValueCookie('returnLink') || '/';
 	},
 
 	setLinkReturn (link) {
